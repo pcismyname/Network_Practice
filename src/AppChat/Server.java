@@ -1,5 +1,4 @@
 package AppChat;
-//https://www.youtube.com/watch?v=hIc_9Wbn704&ab_channel=NeuralNine
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +17,7 @@ public class Server implements  Runnable{
     private ExecutorService pool;
 
     public Server() {
-        connections = new ArrayList();
+        connections = new ArrayList<>();
         done = false;
 
     }
@@ -36,7 +35,7 @@ public class Server implements  Runnable{
                 pool.execute(handler);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            shutdown();
         }
 
 
@@ -94,10 +93,10 @@ public class Server implements  Runnable{
                     if(message.startsWith("/name")){
                         String[] messageSplit =message.split(" ", 2);
                         if(messageSplit.length == 2){
-                            broadcast(name + " rename themself to " + messageSplit[1]);
-                            System.out.println(name + " rename themself to " + messageSplit[1]);
+                            broadcast(name + " rename to " + messageSplit[1]);
+                            System.out.println(name + " rename to " + messageSplit[1]);
                             name = messageSplit[1];
-                            out.println("succesfully change name to" + name);
+                            out.println("succesfully change name to " + name);
                         }
                         else{
                             System.out.println("No nickname provided");
