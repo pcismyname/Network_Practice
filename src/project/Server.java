@@ -20,7 +20,7 @@ public class Server {
             String line;
             while ((line = input.readLine()) != null) {
                 System.out.println("Received: " + line);
-                output.println(line);
+//                output.println(line);
             }
 
             clientSocket.close();
